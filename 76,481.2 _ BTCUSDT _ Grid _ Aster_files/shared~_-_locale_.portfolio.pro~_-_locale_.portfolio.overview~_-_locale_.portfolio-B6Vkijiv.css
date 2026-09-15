@@ -1,0 +1,1 @@
+.borderline-container:before{content:"";transform-origin:0 0;opacity:.5;background:linear-gradient(rgb(var(--colors-background-bg1)), rgb(var(--colors-background-bg1))) padding-box,  linear-gradient(99deg, #fff 9.95%, #fff0 42.41%, #ffffffb3 85.07%) border-box;border:1px solid #0000;border-radius:32px;width:200%;height:200%;position:absolute;top:0;left:0;transform:scale(.5)}
