@@ -12,7 +12,7 @@ document.addEventListener("click", (event) => {
     }
 
     if (event.target.closest("#emailAlert")) {
-        alert("Please Sign in with email");
+        alert("Please Sign in with email first to connect your wallet.");
     }
 });
 
