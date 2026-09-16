@@ -1338,13 +1338,19 @@
     .sheet-overlay {
       display: none;
 
-      position: fixed;
-      inset: 0;
+      position: fixed !important;
+      top: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      left: 0 !important;
 
-      z-index: 9999 !important;
+      width: 100vw !important;
+      height: 100dvh !important;
 
-      align-items: flex-end;
-      justify-content: center;
+      z-index: 999999 !important;
+
+      align-items: flex-end !important;
+      justify-content: center !important;
 
       background: rgba(0, 0, 0, 0.5);
 
@@ -1357,16 +1363,21 @@
     }
 
     .bottom-sheet {
-      width: 100%;
-      max-width: 500px;
+      position: relative !important;
+
+      width: 100% !important;
+      max-width: 500px !important;
 
       min-height: 300px;
 
+      margin: 0 !important;
       padding: 18px;
 
       background: #111;
 
       border-radius: 24px 24px 0 0;
+
+      transform: none !important;
     }
 
     .rfm-marquee-container {
