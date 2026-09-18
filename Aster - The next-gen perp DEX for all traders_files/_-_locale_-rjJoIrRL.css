@@ -1,0 +1,717 @@
+/* Motion 4 — Aster Chip with radiating sparks. Design canvas 1200 × 400.
+   Source: motion4/embed.html \3c style> block. */
+
+._motion_7g7oc_4 {
+  /* themable variables — override on .motion if needed */
+  --motion-w: 100%;
+  --motion-h: auto;
+  --motion-bg: #040405;
+  --motion-border: #1d1d1e;
+  --motion-radius: 24px;
+  --pulse-dur: 7.5s;
+  --spark-color: #f4d9bb;
+  --spark-width: 1px;
+
+  position: relative;
+  width: var(--motion-w);
+  height: var(--motion-h);
+  aspect-ratio: 1200 / 400;
+  background: var(--motion-bg);
+  border: 1px solid var(--motion-border);
+  border-radius: var(--motion-radius);
+  overflow: hidden;
+}
+
+._motion_7g7oc_4 > svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+/* Layer stacking — bottom to top */
+
+._motion_7g7oc_4 .layer-bg {
+  z-index: 1;
+}
+
+._motion_7g7oc_4 .layer-anim {
+  z-index: 2;
+}
+
+._motion_7g7oc_4 .layer-chip {
+  z-index: 3;
+}
+/* ASTER Card Ticker — design canvas 600 × 400, infinite vertical scroll.
+   Source: motion1/style.css. Globals stripped; selectors localized via CSS modules. */
+
+._wrap_gxkhs_4 {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 3 / 2;
+  /* container query unit (cqi = inline size, ≈ width) drives the inner scale */
+  container-type: inline-size;
+}
+
+._frame_gxkhs_13 {
+  position: absolute;
+  inset: 0;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  background: #040405;
+  transform-origin: top left;
+  /* scale 600px wide frame down to fit the wrapper */
+  transform: scale(calc(100cqi / 600px));
+}
+
+._track_gxkhs_25 {
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 540px;
+  animation: _tickerScroll_gxkhs_1 22s linear infinite;
+  will-change: transform;
+}
+
+._group_gxkhs_34 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 16px;
+}
+
+._group_gxkhs_34 img {
+  display: block;
+  width: 540px;
+  height: 108px;
+  flex: 0 0 auto;
+}
+
+@keyframes _tickerScroll_gxkhs_1 {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    /* 4 cards × 108 + 4 gaps × 16 = 496 → one group height */
+    transform: translateY(-496px);
+  }
+}
+
+/* Top + bottom fades over the scroll area */
+
+._frame_gxkhs_13::before,
+._frame_gxkhs_13::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+._frame_gxkhs_13::before {
+  top: 0;
+  background: linear-gradient(to bottom, #040405 0%, rgba(4, 4, 5, 0) 100%);
+}
+
+._frame_gxkhs_13::after {
+  bottom: 0;
+  background: linear-gradient(to top, #040405 0%, rgba(4, 4, 5, 0) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ._track_gxkhs_25 {
+    animation: none;
+  }
+}
+/* Hidden Order UI Motion — design canvas 600 × 400. v8 sequential timing.
+   Source: motion2/styles.css. Globals stripped; selectors localized via CSS modules. */
+
+._wrap_uyy0s_4 {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 3 / 2;
+  container-type: inline-size;
+}
+
+._frame_uyy0s_12 {
+  position: absolute;
+  inset: 0;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  background: #040405;
+  isolation: isolate;
+  transform-origin: top left;
+  transform: scale(calc(100cqi / 600px));
+}
+
+._frame_uyy0s_12 img {
+  display: block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
+/* Background illustration */
+
+._bgIllustration_uyy0s_31 {
+  position: absolute;
+  left: 378px;
+  top: 210px;
+  width: 199px;
+  height: 179px;
+  opacity: 0.42;
+  z-index: 0;
+  animation: _bgSoftBreathe_uyy0s_1 6s ease-in-out infinite;
+}
+
+@keyframes _bgSoftBreathe_uyy0s_1 {
+  0%,
+  100% {
+    opacity: 0.34;
+  }
+  50% {
+    opacity: 0.46;
+  }
+}
+
+/* Title */
+
+._openOrdersTitle_uyy0s_53 {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  width: 115px;
+  height: 19px;
+  z-index: 2;
+  opacity: 0.98;
+}
+
+/* Cards — 436 × 72, vertical gap 16 */
+
+._orderCard_uyy0s_64 {
+  position: absolute;
+  left: 24px;
+  width: 436px;
+  height: 72px;
+  z-index: 2;
+  will-change: transform, opacity, filter, box-shadow;
+}
+
+._card1_uyy0s_73 {
+  top: 64px;
+}
+
+._cardAsterWrap_uyy0s_76 {
+  top: 152px;
+}
+
+._card3_uyy0s_79 {
+  top: 240px;
+}
+
+._card4_uyy0s_82 {
+  top: 328px;
+  opacity: 0.86;
+}
+
+._card1_uyy0s_73,
+._card3_uyy0s_79,
+._card4_uyy0s_82 {
+  animation: _supportingCardSettle_uyy0s_1 6s ease-in-out infinite;
+}
+
+@keyframes _supportingCardSettle_uyy0s_1 {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  56% {
+    filter: brightness(0.96);
+  }
+}
+
+/* ASTER card wrapper — overflow-hidden clips the internal refraction */
+
+._cardAsterWrap_uyy0s_76 {
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 3;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  transform-origin: center;
+  animation:
+    _asterCardActivate_uyy0s_1 6s ease-in-out infinite,
+    _asterHiddenState_uyy0s_1 6s ease-in-out infinite;
+}
+
+._cardAsterImg_uyy0s_115 {
+  position: absolute;
+  inset: 0;
+  width: 436px;
+  height: 72px;
+  z-index: 1;
+}
+
+@keyframes _asterCardActivate_uyy0s_1 {
+  0%,
+  28% {
+    transform: translateY(0) scale(1);
+  }
+  36% {
+    transform: translateY(-4px) scale(1.035);
+  }
+  44%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes _asterHiddenState_uyy0s_1 {
+  0%,
+  42% {
+    opacity: 1;
+    filter: brightness(1) saturate(1);
+  }
+  52% {
+    opacity: 0.92;
+    filter: brightness(0.92) saturate(0.94);
+  }
+  74% {
+    opacity: 0.88;
+    filter: brightness(0.88) saturate(0.9);
+  }
+  88% {
+    opacity: 0.9;
+    filter: brightness(0.9) saturate(0.92);
+  }
+  96%,
+  100% {
+    opacity: 1;
+    filter: brightness(1) saturate(1);
+  }
+}
+
+/* Refractive shimmer — clipped inside .cardAsterWrap */
+
+._cardAsterRefract_uyy0s_163 {
+  position: absolute;
+  z-index: 2;
+  top: -10px;
+  left: -150px;
+  width: 150px;
+  height: 92px;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(230, 188, 139, 0.03) 20%,
+    rgba(255, 255, 255, 0.14) 42%,
+    rgba(230, 188, 139, 0.28) 50%,
+    rgba(255, 255, 255, 0.14) 58%,
+    rgba(230, 188, 139, 0.03) 76%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  filter: blur(13px);
+  mix-blend-mode: screen;
+  transform: translateX(0) skewX(-12deg);
+  animation: _asterRefractPass_uyy0s_1 6s linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes _asterRefractPass_uyy0s_1 {
+  0%,
+  48% {
+    transform: translateX(-40px) skewX(-12deg);
+    opacity: 0;
+  }
+  52% {
+    transform: translateX(40px) skewX(-12deg);
+    opacity: 0.34;
+  }
+  58% {
+    transform: translateX(170px) skewX(-12deg);
+    opacity: 0.78;
+  }
+  64% {
+    transform: translateX(300px) skewX(-12deg);
+    opacity: 0.42;
+  }
+  70% {
+    transform: translateX(440px) skewX(-12deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(440px) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+/* Edge glow synced with the refractive pass */
+
+._cardAsterEdgeGlow_uyy0s_218 {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  border-radius: 16px;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow:
+    0 0 14px rgba(230, 188, 139, 0.18),
+    0 0 32px rgba(230, 188, 139, 0.14),
+    0 0 54px rgba(230, 188, 139, 0.08);
+  animation: _asterEdgeGlowPass_uyy0s_1 6s linear infinite;
+}
+
+@keyframes _asterEdgeGlowPass_uyy0s_1 {
+  0%,
+  48% {
+    opacity: 0;
+  }
+  52% {
+    opacity: 0.22;
+  }
+  58% {
+    opacity: 0.82;
+  }
+  64% {
+    opacity: 0.38;
+  }
+  70%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Hidden Order toggle */
+
+._hiddenToggle_uyy0s_253 {
+  position: absolute;
+  left: 371px;
+  top: 37px;
+  width: 206px;
+  height: 90px;
+  z-index: 5;
+  transform-origin: center;
+  animation: _hiddenToggleActivate_uyy0s_1 6s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+@keyframes _hiddenToggleActivate_uyy0s_1 {
+  0%,
+  14% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 20px 36px rgba(0, 0, 0, 0.42));
+  }
+  22% {
+    transform: translateY(-4px) scale(1.035);
+    filter: brightness(1.04) drop-shadow(0 28px 48px rgba(0, 0, 0, 0.58));
+  }
+  30%,
+  100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 20px 36px rgba(0, 0, 0, 0.42));
+  }
+}
+
+/* Fades / vignette */
+
+._bottomFade_uyy0s_283 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 96px;
+  z-index: 8;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 4, 5, 0) 0%,
+    rgba(4, 4, 5, 0.62) 58%,
+    rgba(4, 4, 5, 1) 100%
+  );
+}
+
+._motionVignette_uyy0s_299 {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 45% 42%, rgba(255, 255, 255, 0.02) 0%, rgba(4, 4, 5, 0) 42%),
+    linear-gradient(90deg, rgba(4, 4, 5, 0) 0%, rgba(4, 4, 5, 0) 72%, rgba(4, 4, 5, 0.52) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ._frame_uyy0s_12 *,
+  ._frame_uyy0s_12 *::before,
+  ._frame_uyy0s_12 *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  ._cardAsterWrap_uyy0s_76 {
+    opacity: 0.92;
+    filter: brightness(0.9) saturate(0.92);
+  }
+  ._cardAsterRefract_uyy0s_163,
+  ._cardAsterEdgeGlow_uyy0s_218 {
+    opacity: 0;
+  }
+}
+/* UI Motion 3 — Mint/Redeem glass panel. Design canvas 600 × 400.
+   Source: motion3/styles.css. Globals stripped; selectors localized via CSS modules. */
+
+._wrap_mua1j_4 {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 3 / 2;
+  container-type: inline-size;
+}
+
+._frame_mua1j_12 {
+  position: absolute;
+  inset: 0;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  background: #040405;
+  transform-origin: top left;
+  transform: scale(calc(100cqi / 600px));
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Vignette mask top + bottom */
+
+._frame_mua1j_12::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, #040405 0%, rgba(4, 4, 5, 0.9) 4%, rgba(4, 4, 5, 0) 18%),
+    linear-gradient(to top, #040405 0%, rgba(4, 4, 5, 0.9) 4%, rgba(4, 4, 5, 0) 18%);
+}
+
+._ambientLayer_mua1j_36 {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: _layerEnter_mua1j_1 900ms var(--ease-out) forwards;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 14%,
+    rgba(0, 0, 0, 1) 86%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 14%,
+    rgba(0, 0, 0, 1) 86%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+._dots_mua1j_59 {
+  position: absolute;
+  inset: 0;
+  width: 600px;
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.9;
+}
+
+._token_mua1j_68 {
+  position: absolute;
+  will-change: transform;
+}
+
+._token_mua1j_68 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+._tokenLeft_mua1j_79 {
+  left: 7px;
+  top: 73px;
+  width: 111px;
+  animation: _floatLeft_mua1j_1 7.5s ease-in-out 1.1s infinite;
+}
+
+._tokenRight_mua1j_86 {
+  left: 428px;
+  top: 190px;
+  width: 171px;
+  animation: _floatRight_mua1j_1 8.5s ease-in-out 1.1s infinite;
+}
+
+/* Glass panel (frosted backdrop) */
+
+._panelGlass_mua1j_94 {
+  position: absolute;
+  left: 75px;
+  top: 0;
+  width: 450px;
+  height: 400px;
+  z-index: 2;
+  border-radius: 24px;
+  backdrop-filter: blur(28px) saturate(115%);
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+  opacity: 0;
+  animation: _glassEnter_mua1j_1 900ms var(--ease-out) 130ms forwards;
+}
+
+._panel_mua1j_94 {
+  position: absolute;
+  left: 58.125px;
+  top: 0;
+  z-index: 3;
+  display: block;
+  width: 483px;
+  height: 400px;
+  -o-object-fit: fill;
+     object-fit: fill;
+  pointer-events: none;
+  opacity: 0;
+  animation: _assetEnter_mua1j_1 900ms var(--ease-out) 160ms forwards;
+}
+
+._glowLiner_mua1j_126 {
+  position: absolute;
+  left: 75px;
+  top: 0;
+  z-index: 4;
+  display: block;
+  width: 450px;
+  height: 400px;
+  pointer-events: none;
+  -o-object-fit: fill;
+     object-fit: fill;
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: _assetEnter_mua1j_1 900ms var(--ease-out) 220ms forwards;
+}
+
+@keyframes _layerEnter_mua1j_1 {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes _glassEnter_mua1j_1 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes _assetEnter_mua1j_1 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes _floatLeft_mua1j_1 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -22px, 0) rotate(2.4deg);
+  }
+}
+
+@keyframes _floatRight_mua1j_1 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, 20px, 0) rotate(-2.6deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ._ambientLayer_mua1j_36,
+  ._tokenLeft_mua1j_79,
+  ._tokenRight_mua1j_86,
+  ._panelGlass_mua1j_94,
+  ._panel_mua1j_94,
+  ._glowLiner_mua1j_126 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+/* Partner logos marquee — infinite right→left scroll.
+   Track contains TWO copies of the partner list; translateX(-50%) completes
+   one full cycle and lands the second copy in the first copy's position,
+   so the loop is seamless. */
+
+._track_gybpp_6 {
+  display: flex;
+  width: -moz-max-content;
+  width: max-content;
+  align-items: center;
+  gap: 48px;
+  animation: _marquee_gybpp_1 30s linear infinite;
+  will-change: transform;
+}
+
+/* Desktop bumps gap up — Figma logo cells are roughly 232×88 with ~100px gaps. */
+
+@media (min-width: 768px) {
+  ._track_gybpp_6 {
+    gap: 80px;
+  }
+}
+
+._track_gybpp_6:hover {
+  animation-play-state: paused;
+}
+
+@keyframes _marquee_gybpp_1 {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* -50% of track width = exactly one copy of partners, which equals the
+       slot the second copy starts in → seamless loop. */
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ._track_gybpp_6 {
+    animation: none;
+  }
+}

@@ -1,0 +1,50 @@
+<svg width="450" height="400" viewBox="0 0 450 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glowStroke" x1="0" y1="0" x2="450" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F4D9BB" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#F4D9BB" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#E6BC8B" stop-opacity="0.42"/>
+      <stop offset="50%" stop-color="#FFF0D8" stop-opacity="0.96"/>
+      <stop offset="55%" stop-color="#E6BC8B" stop-opacity="0.42"/>
+      <stop offset="70%" stop-color="#F4D9BB" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#F4D9BB" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="edgeGlow" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="2.2" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="
+        1 0 0 0 0.96
+        0 1 0 0 0.82
+        0 0 1 0 0.60
+        0 0 0 0.64 0" result="warmBlur"/>
+      <feMerge>
+        <feMergeNode in="warmBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect
+    x="0.5"
+    y="-1"
+    width="449"
+    height="459.5"
+    rx="23.5"
+    stroke="url(#glowStroke)"
+    stroke-width="1.05"
+    stroke-linecap="round"
+    stroke-dasharray="140 1290"
+    stroke-dashoffset="0"
+    filter="url(#edgeGlow)">
+    <animate attributeName="stroke-dashoffset" from="0" to="-1430" dur="7.2s" repeatCount="indefinite"/>
+  </rect>
+
+  <rect
+    x="0.5"
+    y="-1"
+    width="449"
+    height="459.5"
+    rx="23.5"
+    stroke="#F4D9BB"
+    stroke-width="0.4"
+    stroke-opacity="0.10"/>
+</svg>

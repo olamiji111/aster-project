@@ -1,0 +1,59 @@
+.picker-gradient-border {
+  position: relative;
+  background-clip: content-box;
+  background-origin: content-box;
+  padding: 1px
+}
+.picker-gradient-border:before {
+  pointer-events: none;
+  position: absolute;
+  inset: 0px;
+  border-radius: inherit;
+  padding: 1px;
+  content: '';
+  background: linear-gradient(
+    225deg,
+    rgb(var(--colors-interactive-primaryAccent01) / 0.3),
+    rgb(var(--colors-interactive-primary) / 0.1)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+          mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude
+}
+/* Figma UI-kit 2.0 node 786:28166 — Date Picker year/month dropdown panel */
+.picker-dropdown-panel {
+  position: relative;
+  border-radius: 32px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(var(--colors-interactive-interactiveBg) / var(--tw-bg-opacity));
+  --tw-shadow: 0 10px 16px 1px rgba(0,0,0,0.15);
+  --tw-shadow-colored: 0 10px 16px 1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}
+.picker-dropdown-panel::before {
+  pointer-events: none;
+  position: absolute;
+  inset: 0px;
+  border-radius: inherit;
+  padding: 1px;
+  content: '';
+  background: linear-gradient(
+    145deg,
+    rgb(var(--colors-interactive-interactive02) / 0.5) 0%,
+    rgb(var(--colors-background-bg1)) 53.97%,
+    rgb(var(--colors-interactive-interactive01)) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+          mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude
+}

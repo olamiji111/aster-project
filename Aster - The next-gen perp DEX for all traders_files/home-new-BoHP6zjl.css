@@ -1,0 +1,169 @@
+/* Scope-override @astrolabs/theme gold tokens for the HomeNew section only.
+   astherus-main-ui's base theme (@astrolabs/configs) is purple — these overrides
+   bring uikit Button/text-t-black/interactive-primary into the Aster gold system
+   within `.home-new` without leaking to the rest of the site. */
+
+.home-new {
+  /* Per Figma every text in HomeNew uses TT Turns. configs theme defaults to Outfit
+     (via --font-site-main) and does NOT define --font-family, so we set the family
+     literally here. The @font-face declarations live in tt-turns.css. */
+  font-family: 'TT Turns', sans-serif;
+
+  /* Neutral gray scale per @astrolabs/theme dark.css.
+     configs/theme/dark.css uses a purple-tinted scale (e.g. t-secondary = 178 180 198)
+     which doesn't match the Aster brand. Override to neutral grays inside HomeNew. */
+  --colors-t-primary: 255 255 255;
+  --colors-t-secondary: 202 202 203;
+  --colors-t-third: 122 122 123;
+  --colors-t-disabled: 102 102 103;
+  --colors-t-placeholder: 88 88 89;
+  --colors-t-black: 18 18 19;
+  --colors-t-link: 230 188 139;
+  --colors-t-linkHover: 244 217 187;
+  --colors-t-onColor: 18 18 19;
+  --colors-interactive-primary: 244 217 187;
+  --colors-interactive-primaryHover: 255 237 206;
+  --colors-interactive-primaryActive: 244 217 187;
+  --colors-interactive-primaryAccent01: 230 188 139;
+  --colors-interactive-primaryAccent02: 255 237 206;
+  --colors-interactive-interactive01: 29 29 30;
+  --colors-interactive-interactive01Hover: 39 39 40;
+  --colors-interactive-interactive02: 41 41 42;
+  --colors-interactive-interactive02Hover: 51 51 52;
+
+  /* Neutral border scale per @astrolabs/theme dark.css.
+     configs uses purple-tinted values (lineSubtle = 48 50 74) which makes
+     section dividers visibly purple. Override to Aster neutrals so
+     border-border-lineSubtle (used by <main>'s divide-y) renders as #1D1D1E. */
+  --colors-border-line: 46 46 47;
+  --colors-border-lineSubtle: 29 29 30;
+  --colors-border-lineStrong: 59 59 60;
+
+  --ds-highlight: rgb(var(--colors-interactive-primary));
+  --ds-t_black: rgb(var(--colors-t-black));
+  --ds-primary: rgb(var(--colors-interactive-primary));
+  --ds-primary-btn-bg: linear-gradient(to right, #e4b48c 0%, #fff2dc 100%);
+  --ds-primary-btn-bg-hover: linear-gradient(to right, #f0cba4 0%, #ffffff 100%);
+  --ds-primary-btn-border: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 43.2%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  --ds-primary-btn-text: rgb(18, 18, 19);
+}
+
+/* "Launch App" header CTA — mirrors uikit Button variant="secondaryYellow":
+   - default bg: rgba(230,188,139,0.15) under a top-to-bottom darkening overlay
+   - hover bg:   rgba(230,188,139,0.25) (same overlay; gold tint deepens, NOT
+                 opacity-90 of the whole button)
+   - inner 1px gold shadow + 1px gradient border via padding-box mask */
+
+.home-new .home-launch-btn {
+  background:
+    linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%),
+    rgba(230, 188, 139, 0.15);
+  box-shadow: 0 0 1px #e6bc8b inset;
+  transition: background 150ms ease;
+}
+
+.home-new .home-launch-btn:hover {
+  background:
+    linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%),
+    rgba(230, 188, 139, 0.25);
+}
+
+.home-new .home-launch-btn-border {
+  padding: 1px;
+  background: linear-gradient(
+    to top left,
+    rgba(244, 217, 187, 0.15) 0%,
+    rgba(46, 46, 46, 0.23) 29.25%,
+    rgba(50, 50, 50, 0.1) 53.18%,
+    rgba(244, 217, 187, 0.7) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* "Start Trading" CTA — mirrors uikit Button variant="primary":
+   - bg + hover bg use --ds-primary-btn-* vars (Figma 278deg gradient kept)
+   - white-fading gradient border via padding-box mask overlay */
+
+.home-new .home-cta {
+  background: linear-gradient(278deg, #FFEDCE 0.01%, #F0CBA4 84.78%);
+  transition: background 150ms ease;
+}
+
+.home-new .home-cta:hover {
+  background: linear-gradient(278deg, #FFFFFF 0.01%, #FFEDCE 84.78%);
+}
+
+.home-new .home-cta-border {
+  padding: 1.4px;
+  background: var(
+    --ds-primary-btn-border,
+    linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0) 43.2%,
+      rgba(255, 255, 255, 0.7) 100%
+    )
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* PocketMockupMotion cursor — keyframes copied from aster_ui_motion_showcase.html. */
+
+.pocket-cursor-ripple {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(240, 201, 106, 0.5);
+  animation: pocket-cursor-ripple-out 0.55s ease-out forwards;
+}
+
+.pocket-cursor-ring {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(240, 201, 106, 0.85);
+  background: rgba(240, 201, 106, 0.06);
+  animation: pocket-cursor-ring-press 0.55s ease-out forwards;
+}
+
+.pocket-cursor-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f0c96a;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0 0 8px 3px rgba(240, 201, 106, 0.6);
+  animation: pocket-cursor-dot-pulse 0.55s ease-out forwards;
+}
+
+@keyframes pocket-cursor-ripple-out {
+  0% { transform: scale(0.5); opacity: 0.8; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes pocket-cursor-ring-press {
+  0% { transform: scale(1.1); opacity: 0; }
+  20% { transform: scale(0.85); opacity: 1; }
+  60% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes pocket-cursor-dot-pulse {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  25% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+  55% { transform: translate(-50%, -50%) scale(0.9); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
